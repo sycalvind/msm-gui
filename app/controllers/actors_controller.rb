@@ -28,4 +28,11 @@ class ActorsController < ApplicationController
     x.save
     redirect_to("/actors")
   end
+
+  def delete
+    actor_id = params.fetch("actor_id")
+    matching_actor = Actor.where({ :id => actor_id }).first
+    matching_actor.destroy
+    redirect_to("/actors")
+  end
 end
